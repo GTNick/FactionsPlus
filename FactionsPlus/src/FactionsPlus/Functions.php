@@ -25,8 +25,8 @@ class Functions extends PluginBase  {
             $this->fCommand = new Commands($this);
             @mkdir($this->getDataFolder());
             if(!file_exists($this->getDataFolder() . "factions_data/")){
-			    @mkdir($this->getDataFolder() . "factions_data/");
-			    @mkdir($this->getDataFolder() . "factions_players/");
+			   @mkdir($this->getDataFolder() . "factions_data/");
+			   @mkdir($this->getDataFolder() . "factions_players/");
 		    }
 		    
 		
