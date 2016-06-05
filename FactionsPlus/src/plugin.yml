@@ -1,1 +1,10 @@
-
+name: FactionsOP
+author: Panda843
+description: Something I have in mind. Perhaps.
+version: 1.0.0
+main: FactionsOP\Functions
+api: 1.12.0
+commands:
+  f:
+    description: use /f help for all parameters
+    permission: f.command
