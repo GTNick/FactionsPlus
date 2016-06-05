@@ -280,17 +280,37 @@ class Functions extends PluginBase  {
             $sender->sendMessage("Description - $description");
             $sender->sendMessage("Players - $players");
             $sender->sendMessage("Leader - $leader");
-            
-            $sender->sendMessage("Officers :");
-            for($i=0;$i<sizeof($officers);$i++){
-                $sender->sendMessage("$officers[$i] ||");
-            }
-            $sender->sendMessage("Members :");
-            for($i=0;$i<sizeof($members);$i++){
-                $sender->sendMessage("$members[$i] ||");
+        }
+        public function print_ranks($sender, $name_of_faction, $rank){
+            switch($rank){
+                case "member":
+                    $members = $this->get_members($name_of_faction);
+                    if(sizeof($members)==0){
+                        $sender->sendMessage("This faction doesn't have any members!");
+                    } else {
+                        $sender->sendMessage("Listing the members of $name_of_faction :");
+                        for($i = 0; $i < sizeof($members); $i = $i + 1){
+                            $sender->sendMessage($members[$i] . " || ");
+                        }
+                    }
+                    break;
+                case "officer":
+                    $officers = $this->get_officers($name_of_faction);
+                    if(sizeof($officers)==0){
+                        $sender->sendMessage("This faction doesn't have any officers!");
+                    } else {
+                        $sender->sendMessage("Listing the officers of $name_of_faction :");
+                        for($i = 0; $i < sizeof($officers); $i = $i + 1){
+                            $sender->sendMessage($officers[$i] . " || ");
+                        }
+                    }
+                    break;
+                case "leader":
+                    $leader = $this->get_leader($name_of_faction);
+                    $sender->sendMessage("The leader of $name_of_faction is $leader!");
+                    break;
             }
         }
-    
        
     
         public function onDisable(){
