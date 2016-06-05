@@ -30,7 +30,10 @@ class Commands {
         public function onCommand(CommandSender $sender, Command $command, $label, array $args) {
             
             if(strtolower($command->getName('f'))) {
-               
+                if(!($sender instanceof Player)){
+                    $sender->sendMessage("Please run command in-game!");
+                    return true;
+                } 
                 if(empty($args)){
                     $sender->sendMessage("Use /f <1-2>");
                     return true;
